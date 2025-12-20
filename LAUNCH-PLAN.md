@@ -900,8 +900,139 @@ TIPS:
 
 ---
 
+## 11. Domain Strategy (Multiple Domains)
+
+If the client owns multiple domains, here's how to maximize SEO value.
+
+### The Problem with Duplicate Sites
+
+Publishing the same website to multiple domains is **harmful for SEO**:
+- Google treats it as **duplicate content** and may penalize all versions
+- **Link equity gets split** - backlinks to domain A don't help domain B
+- Google picks ONE as canonical, others may get de-indexed
+- Wastes crawl budget
+
+---
+
+### The Correct Approach: One Primary + 301 Redirects
+
+**Choose one primary domain** where all content lives, then redirect all others:
+
+```
+Primary Domain (all content lives here):
+  oakridgechildrenservices.ca
+
+301 Permanent Redirects (send all traffic to primary):
+  oakridgechildrenservices.com  →  oakridgechildrenservices.ca
+  oakridgeaba.ca                →  oakridgechildrenservices.ca
+  oakridgeaba.com               →  oakridgechildrenservices.ca
+  serviceswithoakridge.com      →  oakridgechildrenservices.ca
+```
+
+**Benefits:**
+- All link equity flows to one domain (stronger rankings)
+- No duplicate content issues
+- Users always land on the "real" site
+- Protects brand from competitors buying similar domains
+
+---
+
+### How to Implement 301 Redirects
+
+**On Netlify** (recommended hosting):
+
+Create a `_redirects` file in the root:
+```
+# Redirect alternate domains to primary
+https://oakridgechildrenservices.com/* https://oakridgechildrenservices.ca/:splat 301!
+https://www.oakridgechildrenservices.com/* https://oakridgechildrenservices.ca/:splat 301!
+```
+
+Or in `netlify.toml`:
+```toml
+[[redirects]]
+  from = "https://oakridgechildrenservices.com/*"
+  to = "https://oakridgechildrenservices.ca/:splat"
+  status = 301
+  force = true
+```
+
+**On Cloudflare:**
+- Add all domains to Cloudflare account
+- Use Page Rules or Bulk Redirects
+- Point each to primary domain with 301 status
+
+**At Domain Registrar:**
+- Many registrars (GoDaddy, Namecheap, etc.) offer "domain forwarding"
+- Set to 301 permanent redirect
+- Simplest option if domains aren't on same hosting platform
+
+---
+
+### Alternative: Use Domains for Campaign Tracking
+
+Extra domains can track marketing effectiveness:
+
+```
+oakridgeaba.ca        →  oakridgechildrenservices.ca?utm_source=short-domain
+bramptonabatherapy.ca →  oakridgechildrenservices.ca?utm_source=local-seo-domain
+```
+
+**Benefits:**
+- Track which domain names people remember/type
+- Measure offline marketing (business cards, flyers)
+- Maintain single authoritative website
+- Get analytics on domain awareness
+
+---
+
+### Which Domain Should Be Primary?
+
+| Factor | Recommendation |
+|--------|----------------|
+| **Country targeting** | Use `.ca` for Canadian-focused business |
+| **Brand consistency** | Match the business name exactly |
+| **Existing authority** | If one domain has backlinks/history, keep it |
+| **Memorability** | Shorter is better for word-of-mouth |
+| **Avoid exact-match** | `abatherapybrampton.ca` looks spammy to Google |
+
+**Recommendation for Oakridge:**
+- **Primary:** `oakridgechildrenservices.ca` (or shorter if available)
+- **Redirect all others** to primary
+
+---
+
+### When Multiple Domains Make Sense (Rare)
+
+Only use separate domains with different content for:
+
+| Use Case | Example |
+|----------|---------|
+| Completely different businesses | oakridgeaba.ca vs oakridgeseniorcare.ca |
+| Different geographic markets | oakridge-toronto.ca vs oakridge-vancouver.ca |
+| Temporary campaign microsites | free-aba-assessment.ca (short-term promo) |
+| Legally separate entities | Different corporations |
+
+**Even in these cases**, consider subdomains or subdirectories first:
+- `oakridgechildrenservices.ca/toronto` (subdirectory - best for SEO)
+- `toronto.oakridgechildrenservices.ca` (subdomain - okay)
+- `oakridge-toronto.ca` (separate domain - weakest SEO)
+
+---
+
+### Questions for Client: Domain Edition
+
+1. **Inventory:** What domains do they currently own?
+2. **History:** Which domain is currently live or has been used before?
+3. **Backlinks:** Any existing links pointing to any domains? (Check with Ahrefs/Moz)
+4. **Acquisitions:** Are there domains they want to purchase for brand protection?
+5. **Email:** Do they need branded email? (Affects hosting decisions)
+6. **Preference:** Does the client have a strong preference for a specific domain?
+
+---
+
 *Document created: December 2024*
-*Last updated: Launch planning phase*
+*Last updated: Added domain strategy section*
 
 **Related Documents:**
 - [WEBSITE-IMPROVEMENTS.md](./WEBSITE-IMPROVEMENTS.md) - Detailed content, design, and branding recommendations
