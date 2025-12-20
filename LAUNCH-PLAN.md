@@ -571,5 +571,334 @@ Before proceeding, clarify with the business owner:
 
 ---
 
+## 9. Blog / Content Management for Non-Technical Client
+
+The client wants to publish articles without coding knowledge or coming to us each time. Here are the best options, ranked by ease of use.
+
+---
+
+### Option A: Decap CMS (Recommended for This Site)
+**Formerly known as Netlify CMS**
+**Cost:** Free
+
+**Why It's Perfect:**
+- Works with our existing static site (no rebuild needed)
+- Beautiful admin interface at yoursite.com/admin
+- Client logs in, writes in a Word-like editor, clicks "Publish"
+- Content saves directly to GitHub, site auto-deploys
+- No database, no server, no ongoing maintenance
+
+**What the Client Sees:**
+```
+┌─────────────────────────────────────────────────────┐
+│  Oakridge Blog Admin                    [Publish ▼] │
+├─────────────────────────────────────────────────────┤
+│  Title: Understanding ABA Therapy                   │
+│  ─────────────────────────────────────────────────  │
+│  Date: December 20, 2024                            │
+│  ─────────────────────────────────────────────────  │
+│  Featured Image: [Upload Image]                     │
+│  ─────────────────────────────────────────────────  │
+│                                                     │
+│  [B] [I] [H1] [H2] [Link] [Image] [Quote]          │
+│  ┌─────────────────────────────────────────────┐   │
+│  │ ABA therapy, or Applied Behavior Analysis,  │   │
+│  │ is a scientific approach to understanding   │   │
+│  │ behavior...                                 │   │
+│  │                                             │   │
+│  │ ## What Parents Should Know                 │   │
+│  │ Many parents wonder...                      │   │
+│  └─────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────┘
+```
+
+**Setup Required (One-Time, by Developer):**
+1. Add `/admin` folder with config files
+2. Create blog post template
+3. Add blog listing page to site
+4. Configure authentication (Netlify Identity - free)
+
+**Authentication Options:**
+- **Netlify Identity** (Free, up to 1000 users) - Email/password login
+- **GitHub Backend** - Client logs in with GitHub (if they have account)
+- **Git Gateway** - Best option, client uses email, we manage via Netlify
+
+**Implementation Effort:** 4-6 hours initial setup
+
+---
+
+### Option B: TinaCMS
+**Cost:** Free tier available, paid starts at $29/month
+
+**Similar to Decap but with:**
+- Visual/inline editing (edit directly on the page preview)
+- Better media management
+- Real-time preview
+- Cloud-hosted option (less setup)
+
+**Best For:** Clients who want true "what you see is what you get" editing
+
+---
+
+### Option C: Ghost (Hosted)
+**Cost:** $9-25/month (Ghost Pro) or free self-hosted
+
+**Pros:**
+- Purpose-built for blogging
+- Beautiful, polished editor
+- Built-in SEO features
+- Newsletter/subscription built-in
+- Member areas possible
+
+**Cons:**
+- Separate from main site (subdomain like blog.oakridge.ca)
+- Monthly cost
+- Different design from main site (needs theming)
+
+**Integration Approach:**
+- Host blog at `blog.oakridgechildrenservices.ca`
+- Add "Blog" link in main site navigation
+- Can embed recent posts on main site via API
+
+---
+
+### Option D: Notion as CMS
+**Cost:** Free (Notion) + $12-16/month (Super.so or Potion.so)
+
+**How It Works:**
+1. Client writes blog posts in Notion (very user-friendly!)
+2. Super.so or Potion.so converts Notion pages to a website
+3. Updates in Notion automatically appear on blog
+
+**Pros:**
+- Client probably already knows Notion
+- Extremely easy to use
+- Collaborative editing
+- Can use existing Notion workspace
+
+**Cons:**
+- Requires third-party service (Super/Potion)
+- Blog styling may differ from main site
+- Usually runs on subdomain
+
+---
+
+### Option E: WordPress (Headless)
+**Cost:** $3-10/month for hosting
+
+**How It Works:**
+1. WordPress runs as backend/admin only
+2. Blog posts are pulled via API
+3. Displayed on static site
+
+**Pros:**
+- Client may already know WordPress
+- Most familiar CMS in the world
+- Powerful plugin ecosystem
+
+**Cons:**
+- Requires WordPress hosting
+- Security updates needed
+- More complex setup
+- Overkill for simple blogging
+
+---
+
+### Option F: External Blog Platform
+**Platforms:** Medium, Substack, LinkedIn Articles
+
+**Pros:**
+- Zero setup
+- Built-in audience/discovery
+- Client just writes and publishes
+
+**Cons:**
+- Not on your domain (SEO benefits go elsewhere)
+- Less professional appearance
+- Limited branding
+
+**Hybrid Approach:**
+- Add "Blog" link that goes to Medium publication
+- Or embed Medium feed on site
+
+---
+
+### Blog CMS Decision Matrix
+
+| Priority | Best Choice | Why |
+|----------|-------------|-----|
+| **Easiest for client** | Notion + Super.so | They may already use Notion |
+| **Best integrated** | Decap CMS | Lives on same site, same design |
+| **Professional blogging** | Ghost | Purpose-built, newsletters included |
+| **Client knows WordPress** | Headless WordPress | Familiar interface |
+| **Zero budget** | Decap CMS | Completely free |
+| **Future newsletters** | Ghost or Substack | Built-in subscription |
+
+---
+
+### Recommended: Decap CMS Implementation
+
+**Why Decap CMS is Best for Oakridge:**
+1. Free forever
+2. Stays on same domain (oakridgechildrenservices.ca/blog)
+3. Same design/branding as main site
+4. No additional hosting needed
+5. Simple, clean admin interface
+6. Client can't "break" anything
+
+**File Structure After Implementation:**
+```
+/oakridge
+├── index.html
+├── blog/
+│   ├── index.html          (blog listing page)
+│   └── posts/
+│       ├── understanding-aba-therapy.html
+│       └── signs-your-child-may-benefit.html
+├── admin/
+│   ├── index.html          (admin dashboard)
+│   └── config.yml          (CMS configuration)
+├── content/
+│   └── posts/              (markdown blog posts)
+│       ├── 2024-12-20-understanding-aba.md
+│       └── 2024-12-15-signs-child-may-benefit.md
+└── ...existing files
+```
+
+**What We Build:**
+1. `/admin` - Admin interface (client goes here to write)
+2. `/blog` - Public blog listing page
+3. `/blog/[post-slug]` - Individual blog post pages
+4. Build script to generate HTML from markdown
+
+**Client Workflow:**
+1. Go to `oakridgechildrenservices.ca/admin`
+2. Log in with email/password
+3. Click "New Post"
+4. Write article in visual editor
+5. Upload images with drag-and-drop
+6. Click "Publish"
+7. Site automatically rebuilds (30-60 seconds)
+8. Post is live!
+
+---
+
+### Blog Features to Include
+
+**Essential:**
+- Title and body
+- Featured image
+- Publish date
+- Author name
+- SEO meta description
+- URL slug
+
+**Nice to Have:**
+- Categories/tags
+- Related posts
+- Reading time estimate
+- Social sharing buttons
+- Author bio
+
+**Advanced (Phase 2):**
+- Search functionality
+- Newsletter signup on posts
+- Comments (Disqus or similar)
+- Series/multi-part posts
+
+---
+
+### Static Site Generator Consideration
+
+For blogs with Decap CMS, we have two approaches:
+
+**Approach 1: Build Script (Simple)**
+- Write a simple Node.js script that:
+  - Reads markdown files from `/content/posts`
+  - Converts to HTML using a template
+  - Outputs to `/blog/` folder
+- Runs on Netlify during deploy
+- Minimal dependencies
+
+**Approach 2: 11ty (Eleventy)**
+- Lightweight static site generator
+- Perfect for adding blog to existing HTML site
+- Very fast builds
+- Maintains our current HTML/CSS/JS approach
+
+**Approach 3: Keep It Ultra-Simple**
+- Each blog post is a standalone HTML file
+- Client uses Decap CMS to edit HTML directly
+- No build step needed
+- Most straightforward but less flexible
+
+---
+
+### Implementation Timeline for Blog
+
+**Phase 1: Basic Blog (3-4 hours)**
+- [ ] Set up Decap CMS admin interface
+- [ ] Create blog post template
+- [ ] Create blog listing page
+- [ ] Configure Netlify Identity for login
+- [ ] Test full publishing workflow
+
+**Phase 2: Polish (2-3 hours)**
+- [ ] Add blog link to main navigation
+- [ ] Style blog to match main site
+- [ ] Add recent posts to homepage (optional)
+- [ ] Set up categories/tags
+
+**Phase 3: Training (1 hour)**
+- [ ] Create quick-start guide for client
+- [ ] Record 5-minute tutorial video
+- [ ] Do a walkthrough call with client
+
+---
+
+### Client Training Materials
+
+We should provide:
+1. **PDF Quick Guide:** "How to Publish a Blog Post"
+2. **Video Tutorial:** Screen recording of full process
+3. **FAQ Document:** Common questions and answers
+4. **Support Contact:** Who to email if stuck
+
+**Sample Quick Guide Outline:**
+```
+HOW TO PUBLISH A BLOG POST
+===========================
+
+1. Go to: oakridgechildrenservices.ca/admin
+2. Log in with your email
+3. Click "Blog Posts" in sidebar
+4. Click "New Blog Post"
+5. Fill in:
+   - Title
+   - Content (use the formatting toolbar!)
+   - Featured image (drag and drop)
+6. Click "Publish" when ready
+7. Wait 1 minute, then check your site!
+
+TIPS:
+- Save drafts with "Save" button
+- Preview before publishing
+- Images should be under 1MB
+- Need help? Email: support@agency.com
+```
+
+---
+
+## 10. Questions for Client: Blog Edition
+
+1. **Frequency:** How often do they plan to post? (Weekly, monthly, occasionally?)
+2. **Authors:** Just one person, or multiple staff members writing?
+3. **Content types:** Just articles, or also videos, podcasts, resources?
+4. **Newsletter:** Do they want blog subscribers / email list?
+5. **Comments:** Allow comments on posts?
+6. **Categories:** Want to organize by topic (ABA tips, parent resources, company news)?
+
+---
+
 *Document created: December 2024*
-*Last updated: Launch planning phase*
+*Last updated: Launch planning phase - Added blog/CMS options*
