@@ -256,6 +256,30 @@
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
+    <!-- Sticky Top Banner -->
+    <div class="promo-banner">
+        <div class="container">
+            <p><strong>Limited Availability:</strong> Free 30-minute consultation for new families. <a href="#contact">Book Now</a></p>
+        </div>
+    </div>
+
+    <!-- Floating CTA Button (Mobile) -->
+    <a href="#contact" class="floating-cta" aria-label="Schedule consultation">
+        <span class="floating-cta-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+        </span>
+        <span class="floating-cta-text">Free Consultation</span>
+    </a>
+
+    <!-- Floating Phone Button (Mobile) -->
+    <a href="tel:+19054513556" class="floating-phone" aria-label="Call us">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+    </a>
+
     <!-- Header / Navigation -->
     <header class="header" id="header">
         <div class="container">
@@ -762,13 +786,26 @@
         <section class="contact" id="contact">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-badge">Contact Us</span>
-                    <h2>Get in Touch</h2>
-                    <p>Ready to learn more? Reach out to schedule a free consultation or ask us any questions.</p>
+                    <span class="section-badge">Start Today</span>
+                    <h2>Schedule Your Free Consultation</h2>
+                    <p>Take the first step. Book a free 30-minute consultation and tour of our centre.</p>
                 </div>
 
                 <div class="contact-grid">
                     <div class="contact-form-wrapper">
+                        <!-- Form Header with Urgency -->
+                        <div class="form-header">
+                            <div class="form-header-badge">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                                <span>Response within 24 hours</span>
+                            </div>
+                            <h3>Book Your Free Consultation</h3>
+                            <p>Fill out the form below and our team will reach out to schedule your visit.</p>
+                        </div>
+
                         <form class="contact-form" id="contact-form" action="#" method="POST">
                             <div class="form-group">
                                 <label for="parent-name">Your Name <span class="required">*</span></label>
@@ -786,30 +823,60 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="child-age">Child's Age</label>
-                                <input type="text" id="child-age" name="child-age" placeholder="e.g., 5 years old">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="child-age">Child's Age</label>
+                                    <input type="text" id="child-age" name="child-age" placeholder="e.g., 5 years old">
+                                </div>
+                                <div class="form-group">
+                                    <label for="service-interest">Service of Interest</label>
+                                    <select id="service-interest" name="service-interest">
+                                        <option value="">Select a service...</option>
+                                        <option value="aba-therapy">Individualized ABA Therapy</option>
+                                        <option value="social-groups">Social Skills Groups</option>
+                                        <option value="parent-training">Parent Training</option>
+                                        <option value="respite">Respite Services</option>
+                                        <option value="not-sure">Not sure / General inquiry</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="service-interest">Service of Interest</label>
-                                <select id="service-interest" name="service-interest">
-                                    <option value="">Select a service...</option>
-                                    <option value="aba-therapy">Individualized ABA Therapy</option>
-                                    <option value="social-groups">Social Skills Groups</option>
-                                    <option value="parent-training">Parent Training</option>
-                                    <option value="respite">Respite Services</option>
-                                    <option value="not-sure">Not sure / General inquiry</option>
-                                </select>
+                                <label for="message">Tell us about your child <span class="optional">(optional)</span></label>
+                                <textarea id="message" name="message" rows="3" placeholder="What goals do you have for your child?"></textarea>
                             </div>
 
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="4" placeholder="Tell us about your child and how we can help..."></textarea>
-                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-full btn-submit">
+                                <span>Schedule Free Consultation</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                    <polyline points="12,5 19,12 12,19"/>
+                                </svg>
+                            </button>
 
-                            <button type="submit" class="btn btn-primary btn-lg btn-full">Send Message</button>
-                            <p class="form-note">We'll respond within 1-2 business days. Your information is kept confidential.</p>
+                            <!-- Trust Signals Under Form -->
+                            <div class="form-trust">
+                                <div class="form-trust-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    </svg>
+                                    <span>100% Confidential</span>
+                                </div>
+                                <div class="form-trust-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22,4 12,14.01 9,11.01"/>
+                                    </svg>
+                                    <span>No Obligation</span>
+                                </div>
+                                <div class="form-trust-item">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                    <span>Secure Form</span>
+                                </div>
+                            </div>
                         </form>
                     </div>
 
