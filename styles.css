@@ -4,13 +4,13 @@
 
 /* CSS Custom Properties (Design Tokens) */
 :root {
-    /* Primary Colors - Modern, Trustworthy */
-    --color-primary: #2563EB;
-    --color-primary-dark: #1D4ED8;
-    --color-primary-light: #3B82F6;
-    --color-primary-50: #EFF6FF;
-    --color-primary-100: #DBEAFE;
-    --color-primary-200: #BFDBFE;
+    /* Primary Colors - Purple Theme */
+    --color-primary: #7C3AED;
+    --color-primary-dark: #6D28D9;
+    --color-primary-light: #8B5CF6;
+    --color-primary-50: #F5F3FF;
+    --color-primary-100: #EDE9FE;
+    --color-primary-200: #DDD6FE;
 
     /* Secondary Colors - Warm, Energetic */
     --color-secondary: #F59E0B;
@@ -25,9 +25,9 @@
     --color-error: #EF4444;
 
     /* Gradient */
-    --gradient-primary: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
-    --gradient-hero: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 50%, #FDF4FF 100%);
-    --gradient-cta: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    --gradient-primary: linear-gradient(135deg, #7C3AED 0%, #9333EA 100%);
+    --gradient-hero: linear-gradient(135deg, #F5F3FF 0%, #FAF5FF 50%, #FDF4FF 100%);
+    --gradient-cta: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
     --gradient-warm: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
 
     /* Neutral Colors */
@@ -95,10 +95,10 @@
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    --shadow-glow: 0 0 40px rgba(37, 99, 235, 0.15);
+    --shadow-glow: 0 0 40px rgba(124, 58, 237, 0.15);
     --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
     --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
-    --shadow-button: 0 4px 14px rgba(37, 99, 235, 0.4);
+    --shadow-button: 0 4px 14px rgba(124, 58, 237, 0.4);
 
     /* Transitions */
     --transition-fast: 150ms ease;
@@ -413,6 +413,11 @@ h4 {
 
 .logo-icon {
     display: flex;
+}
+
+.logo-img {
+    display: block;
+    flex-shrink: 0;
 }
 
 .logo-text {
@@ -1590,7 +1595,7 @@ html {
 
 .floating-cta:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
     color: var(--color-white);
 }
 
@@ -1605,10 +1610,10 @@ html {
 
 @keyframes pulse-glow {
     0%, 100% {
-        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+        box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
     }
     50% {
-        box-shadow: 0 4px 25px rgba(37, 99, 235, 0.6);
+        box-shadow: 0 4px 25px rgba(124, 58, 237, 0.6);
     }
 }
 
@@ -1652,9 +1657,9 @@ html {
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%);
+    background: linear-gradient(135deg, #6D28D9 0%, #5B21B6 100%);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.45);
+    box-shadow: 0 8px 25px rgba(124, 58, 237, 0.45);
 }
 
 .btn-submit {
