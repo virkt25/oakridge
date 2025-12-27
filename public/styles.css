@@ -852,6 +852,175 @@ h4 {
 }
 
 /* ============================================
+   Funding Section
+   ============================================ */
+.funding {
+    padding: var(--spacing-16) 0;
+    background: var(--color-gray-50);
+}
+
+.funding-grid {
+    display: grid;
+    gap: var(--spacing-6);
+}
+
+.funding-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
+    transition: all var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.funding-card:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+}
+
+.funding-card-featured {
+    border-color: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-white) 0%, var(--color-primary-50) 100%);
+}
+
+.funding-card-featured:hover {
+    border-color: var(--color-primary-dark);
+}
+
+.funding-badge {
+    position: absolute;
+    top: var(--spacing-4);
+    right: var(--spacing-4);
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-full);
+}
+
+.funding-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: var(--color-primary-50);
+    color: var(--color-primary);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-4);
+}
+
+.funding-card-featured .funding-icon {
+    background: var(--gradient-primary);
+    color: var(--color-white);
+}
+
+.funding-card h3 {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
+    color: var(--color-gray-900);
+}
+
+.funding-card > p {
+    color: var(--color-gray-600);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-4);
+    flex-grow: 1;
+}
+
+.funding-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-5);
+}
+
+.funding-features li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+}
+
+.funding-features li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+}
+
+.funding-card .btn {
+    margin-top: auto;
+    width: 100%;
+    justify-content: center;
+}
+
+.funding-card .btn svg {
+    flex-shrink: 0;
+}
+
+.funding-cta {
+    margin-top: var(--spacing-12);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-10);
+    text-align: center;
+}
+
+.funding-cta-content h3 {
+    color: var(--color-white);
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-3);
+}
+
+.funding-cta-content p {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-6);
+}
+
+.funding-cta .btn-primary {
+    background: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-white);
+}
+
+.funding-cta .btn-primary:hover {
+    background: var(--color-gray-100);
+    color: var(--color-primary-dark);
+    transform: translateY(-3px);
+}
+
+@media (min-width: 768px) {
+    .funding {
+        padding: var(--spacing-20) 0;
+    }
+
+    .funding-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .funding-card {
+        padding: var(--spacing-8);
+    }
+}
+
+@media (min-width: 1024px) {
+    .funding-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ============================================
    About Section
    ============================================ */
 .about {
