@@ -1,4 +1,14 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "oakridge"
+# Cloudflare Pages Configuration
+#
+# This is a static site deployed to Cloudflare Pages.
+#
+# IMPORTANT: In Cloudflare Pages dashboard settings:
+#   - Build command: (leave empty or use "exit 0")
+#   - Build output directory: public
+#   - Deploy command: (leave empty - DO NOT use "wrangler deploy")
+#
+# For local development: npx wrangler pages dev ./public
+
 compatibility_date = "2024-12-01"
 pages_build_output_dir = "./public"
